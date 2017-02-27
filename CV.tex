@@ -1,0 +1,42 @@
+% !TEX TS-program = luatex
+% Awesome Source CV LaTeX Template
+%
+% This template is originally maintained by Christophe ROGER from:
+% https://github.com/darwiin/awesome-neue-latex-cv
+%
+% This modification has been download from:
+% https://github.com/innerTide/awesome-neue-latex-cv-extended
+% Author:
+% Yuefeng Wu
+%
+%
+
+\documentclass[localFont,alternative,chinese]{awesome-source-cv}
+\name{Yuefeng}{Wu}
+\photo{2.6cm}{Avatar}
+\tagline{Master Student in the track of Embedded Systems}
+\socialinfo{
+	\smartphone{+31 6-53296111}
+	\email{wyf1116@gmail.com}\\
+    \linkedin{yuefeng-wu-cn1116}
+	\github{innerTide}\\
+	\address{Boschdijk 17K, 5612 HA, Eindhoven, The Netherlands}\\
+	\infos{ Born on \textbf{Nov. 16th, 1992} in \textbf{Tieling, Liaoning, China}}
+}
+%------------------------------------------
+\begin{document}
+
+%\makecvheader
+
+\makecvheaderwithoutphoto
+
+%--------------------SECTIONS-----------------------------------
+\input{section_education}
+\input{section_work_experience}			% Section work experience
+\input{section_projects}					% Section projects
+\input{section_computer_skills}				% Section computer skills
+\input{section_language}					% Section language
+\input{section_scholarship}					% Section scholarship
+%\input{section_references} 				% Section références
+
+\end{document}

@@ -1,0 +1,53 @@
+% A extension of Awesome Source CV LaTeX Template
+%
+%
+% This template is originally maintained by Christophe ROGER from:
+% https://github.com/darwiin/awesome-neue-latex-cv
+%
+% This modification has been download from:
+% https://github.com/innerTide/awesome-neue-latex-cv-extended
+% Author:
+% Yuefeng Wu
+%
+%
+% Render an experience in the experiences environment
+% Usage: 
+% \experience
+%  {<End date>}      {<Title>}{<Enterprise>}{<Location>}
+%  {<Start date}     {
+%                      <Experience description (Could be a list)>
+%                    }
+%                    {<Technology list>}
+%  {<Logo parameter>}	{<Logo File Name>}
+\sectionTitle{Work Experience}{\faSuitcase}
+
+\begin{experiences}
+	\experience
+    {Present}	{Master's Thesis Intern}{imec NL}{Eindhoven, The Netherlands}
+    {Jan. 2017}	{
+    				\begin{itemize}
+                    	\item Supervised by Prof. Dr. Francky Catthoor, Dr. Anup Kumar Das, and Dr. Ir. Bart Mesman.
+    					\item Explore the communication mechanisms in neuromorphic computing.
+                        \item Extend Noxim for simulation of neuromorphic NoCs.
+                        \item Explore the possibility to apply the segmented-bus architecture to neuromorphic chips. 
+                        \item Research on cluster mapping strategies for the neuromorphic architecture.
+    				\end{itemize}
+    			}
+                {SystemC, C++, Spiking Neural Network, Network-on-Chip, Noxim, CARLsim, Mesh Network, Segmented-Bus}
+     {scale = 0.15}		{imec.png} 
+	\emptySeparator
+    
+    
+    \experience
+    {July 2015}	{Student Assistant}{SEIE of Tianjin University}{Tianjin, P.R.China}
+    {Sept. 2012}	{
+    				\begin{itemize}
+                    	\item Assisted student counsellors with daily affairs and maintained office computers. 
+    					\item Organised several student activities, collected feedback, and summarised experience.
+                        \item Explained knowledge points of professional courses to students who have learning difficulties.
+    				\end{itemize}
+    			}
+                {Communication Skills, Computer Maintenance, Organisational Capabilities, Knowledge Explanation}
+     {height = 1.3cm}		{seie.png} 
+    
+\end{experiences}

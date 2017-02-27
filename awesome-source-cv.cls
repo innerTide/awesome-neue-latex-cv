@@ -15,9 +15,12 @@
 % 
 % The Current Maintainer of this work is M. C. Roger.
 %
+% Yuefeng Wu made some modification on the work experience and language section. 
+% Additionally, Yuefeng also added education and project sections.
+%
 % This work consists of the files awesome-source-cv.cls 
 
-\ProvidesClass{awesome-source-cv}[2016/11/05 v1.6.1 Awesome Source CV Class]
+\ProvidesClass{awesome-source-cv}[2016/11/05 v1.6 Awesome Source CV Class]
 
 \LoadClass[a4paper]{article}
 
@@ -44,6 +47,10 @@
   \def\@alternative{alternate}
 }
 
+\DeclareOption{chinese}{
+  \def\@chinese{chinese}
+}
+
 \ProcessOptions
 
 % Dependences
@@ -62,13 +69,18 @@
 \RequirePackage{enumitem}
 \RequirePackage{longtable} 	
 \RequirePackage{etoolbox}
+\RequirePackage{multirow}
 \RequirePackage{tikz}
 \RequirePackage[skins]{tcolorbox}
+
+\ifdef{\@chinese}{
+	\RequirePackage{luatexja-fontspec}
+}
 
 
 \DeclareUnicodeCharacter{00E9}{\'{e}}
 % Define default accent colors
-\definecolor{basecolor}{HTML}{000066}       %BLUE
+\definecolor{basecolor}{HTML}{0080FF}       %BLUE
 
 \ifundef{\@green} {
   \ifundef{\@red} {
@@ -93,7 +105,6 @@
 \hypersetup{breaklinks}
 
 \pagestyle{empty}                         % non-numbered pages
-%\font\fb=''[cmr10]''                      % for use with \LaTeX command
 
 % Setup CV sections
 \titleformat{\section}{\Large\raggedright}{}{0em}{}[\titlerule]
@@ -123,10 +134,18 @@
 }
 {
   \setmainfont{SourceSansPro-Light}[
-    Path = fonts/, 
-    BoldFont = SourceSansPro-Semibold, 
-    ItalicFont = SourceSansPro-LightIt, 
-    SmallCapsFont = SourceSansPro-Regular]
+  	Path = fonts/, 
+  	BoldFont = SourceSansPro-Semibold, 
+ 	 ItalicFont = SourceSansPro-LightIt, 
+ 	 SmallCapsFont = SourceSansPro-Regular]
+}
+
+\ifdef{\@chinese}{
+	\setmainjfont{NotoSansCJKsc-Light}[
+	Path = fonts/cn/, 
+	BoldFont = NotoSansCJKsc-Medium, 
+	ItalicFont = STKaiti, 
+	SmallCapsFont = NotoSansCJKsc-Regular]
 }
 
 %New length definition
@@ -134,7 +153,20 @@
 \setlength{\rightcolumnlength}{14.8cm}
 
 \newlength{\leftcolumn}
-\setlength{\leftcolumn}{2.5cm}
+\setlength{\leftcolumn}{2cm}
+
+\newlength{\scholarshipnamelength}
+\setlength{\scholarshipnamelength}{10.5cm}
+
+\newlength{\languageright}
+\setlength{\languageright}{6.15cm}
+
+\newlength{\universitynamelength}
+\setlength{\universitynamelength}{12.3cm}
+
+\newlength{\logowidth}
+\setlength{\logowidth}{2.5cm}
+
 
 % Font Awesome icons aliases
 \newcommand{\mailSymbol}{\faAt}
@@ -157,6 +189,7 @@
 % Render author's name
 % Usage: \user{<firstanme>}{<lastname>}
 \newcommand\user[2]{\color{accentcolor}{\LARGE #1 \textbf{#2}}\color{Black}}
+\newcommand\userhuge[2]{\color{accentcolor}{\fontsize{35pt}{35pt}\selectfont #1 \textbf{#2}}\color{Black}}
 
 % Render a text with its symbol
 % Usage; \socialtext{<icon>}{<label>}
@@ -195,7 +228,7 @@
 
 % Render author's linked-in (optional)
 % Usage: \linkedin{<linked-in-nick>}
-\newcommand*{\linkedin}[1]{\sociallink{\linkedinSymbol}{http://www.linkedin.com/in/#1/fr}{linkedin.com/in/#1}}
+\newcommand*{\linkedin}[1]{\sociallink{\linkedinSymbol}{http://www.linkedin.com/in/#1}{linkedin.com/in/#1}}
 
 % Render author's viadeo(optional)
 % Usage: \viadeo{<viadeo-nick>}
@@ -230,6 +263,7 @@
 
 % Render CV header
 % Needs \@firstname, \@lastname and \@tagline to be defined
+
 \newcommand*{\makecvheader}{
   \ifundef{\@alternative}{
     \ifundef{\@photodiameter}{
@@ -265,6 +299,25 @@
     \bigskip
   }
 }
+%Render CV title without photo
+
+\newcommand*{\makecvheaderwithoutphoto}{
+    \begin{minipage}{\linewidth}
+    	\begin{minipage}{0.5\linewidth}
+        	\begin{center}
+        		\color{accentcolor}\userhuge{\@firstname}{\@lastname}\color{black}
+        	\end{center}	
+    	\end{minipage}
+        \begin{minipage}{0.5\linewidth}
+        	\small{\@socialinfo}
+        \end{minipage}
+    \end{minipage}
+}\setmainfont{SourceSansPro-Light}[
+Path = fonts/, 
+BoldFont = SourceSansPro-Semibold, 
+ItalicFont = SourceSansPro-LightIt, 
+SmallCapsFont = SourceSansPro-Regular]
+
 
 % Resume part title definition
 \newcommand\sectionTitle[2]{\section{\texorpdfstring{\color{accentcolor}#2\enspace #1}{#1}}}
@@ -274,20 +327,24 @@
 
 % Define the 'scholarship' environment
 \newenvironment{scholarship}{%
-  \begin{tabular}{Y p{\rightcolumnlength}}
+  \begin{tabular}{Y p{\scholarshipnamelength} l}
 }{%
   \end{tabular}
 }
 
 % Render a scholarshipentry in the scolarship environment
-% Usage: \scholarshipentry{<date>}{<description>}
-\newcommand\scholarshipentry[2]{
-  #1    &  #2 \\
-}
+% Usage: \scholarshipentry{<date>}{<description>}{<remarks>}
+\newcommand\scholarshipentry[3]{
+  #1    &  \textbf{#2}   &  #3\\
+}\setmainfont{SourceSansPro-Light}[
+Path = fonts/, 
+BoldFont = SourceSansPro-Semibold, 
+ItalicFont = SourceSansPro-LightIt, 
+SmallCapsFont = SourceSansPro-Regular]
 
 % Define the 'skills' environment
 \newenvironment{skills}{%
-  \begin{longtable}{R{\leftcolumn}p{\rightcolumnlength}}
+  \begin{longtable}{R{\leftcolumn}p{\languageright}R{\leftcolumn}p{\languageright}}
 }{%
   \end{longtable}
 }
@@ -295,14 +352,22 @@
 % Render a skill in the skills environment
 % Usage: \skill{<skill>}{<level>}
 \newcommand\skill[2]{
-  \textsc{#1}    & \foreach \x in {1,...,5}{{\color{accentcolor!80} \ifnumgreater{\x}{#2}{\faCircleO}{\faCircle}}\enspace } \\
+  \textsc{#1}    & \foreach \x in {1,...,5}{{\color{accentcolor!80} \ifnumgreater{\x}{#2}{\faCircleO}{\faCircle}}\enspace } 
 }
 
 \newcolumntype{E}{>{\raggedright\arraybackslash}p{\rightcolumnlength}}
 
+\newcommand\emptySeparator{\multicolumn{2}{c}{}\\}
+
+\newcommand\universitySeparator{\multicolumn{3}{c}{}\\}
+
+\newcolumntype{U}{>{\raggedright\arraybackslash}p{\universitynamelength}}
+
+\newcolumntype{O}{>{\centering\arraybackslash}p{\logowidth}}
+
 % Define the 'experiences' environment
 \newenvironment{experiences}{%
-  \begin{longtable}{R{\leftcolumn}|E}
+  \begin{longtable}{R{\leftcolumn}|U O}
 }{%
   \end{longtable}
 }
@@ -310,35 +375,65 @@
 % Render an experience in the experiences environment
 % Usage: 
 % \experience
-%  {<End date>}      {<Title>}{<Enterprise>}{<Country>}
+%  {<End date>}      {<Title>}{<Enterprise>}{<Location>}
 %  {<Start date}     {
 %                      <Experience description (Could be a list)>
 %                    }
 %                    {<Technology list>}
-\newcommand\experience[7]{
-  \textsc{#1}    & \textsc{#2, #3, #4}   								\\*
-  \textsc{#5}    & \begin{minipage}[t]{\rightcolumnlength}
+%  {<Logo parameter>}	{Logo File Name}
+\newcommand\experience[9]{
+  \textit{#1}    & \textsc{#2, #3, #4}   			&	
+  \multirow{2}{*}{\includegraphics[#8]{#9}}						\\*
+  \textit{#5}    & \begin{minipage}[t]{\universitynamelength}
   					         #6
                    \end{minipage}										\\*
-                 & \footnotesize{\foreach \n in {#7}{\cvtag{\n}}} 	\\
+                 & \multicolumn{2}{l}{\footnotesize{\foreach \n in {#7}{\cvtag{\n}}}}\\
   }
 
-% Render a consultant experience in the experiences environment
+
+
+
+% Define the 'education' environment
+\newenvironment{educations}{%
+  \begin{longtable}{R{\leftcolumn}|U O}
+}{%
+  \end{longtable}
+}
+
+% Render an university in the educations environment
 % Usage: 
-% \consultantexperience
-%  {<End date>}      {<Consultant title>}{<Consulting Enterprise>}{<Country>}
-%  {<Start date}     {<Client title>}{<Client business unit>}
-%                    {
-%                      <Experience description (Could be a list)>
+% \experience
+%  {<Type of degree>}      {<Name of university>, <City>, <Country>}
+%  {<parameter>}     {<University logo>}  
+%  {<Start date>}     {<Major>}{GPA}
+%  {<End date>}			{<Remarks>}     
+% 
+\newcommand\education[9]{
+  \textsc{#1}    & \textsc{#2}   			&	
+  \multirow{3}{*}{\includegraphics[#3]{#4}}				\\*
+  \textit{#5}    & \textsc{Specialty: #6, GPA: #7}						\\*
+  \textit{#8}    & #9	 \\
+  }
+
+% Define the 'projects' environment
+\newenvironment{projects}{%
+  \begin{longtable}{R{\leftcolumn}|E}
+}{%
+  \end{longtable}
+}
+
+% Render a project in the projects environment
+% Usage: 
+% \project
+%  {<End date>}      {<Project Title>}
+%  {<Start date}     {
+%                      <Contribution to the project>
 %                    }
 %                    {<Technology list>}
-\newcommand\consultantexperience[9]{
-  \textsc{#1}    & \textsc{#2, #3, #4}   								\\*
-  \textsc{#5}    & \emph{#6} pour #7                       				\\*
-  				       & 	\begin{minipage}[t]{\rightcolumnlength}
-  						        #8
-                   	\end{minipage}										\\*
-                 & \footnotesize{\foreach \n in {#9}{\cvtag{\n}}} 	\\
+\newcommand\project[5]{
+  \textit{#1}    & \textsc{#2}   								\\*
+  \textit{#3}    & \begin{minipage}[t]{\rightcolumnlength}
+  					         #4
+                   \end{minipage}										\\*
+                 & \footnotesize{\foreach \n in {#5}{\cvtag{\n}}} 	\\
   }
-
-\newcommand\emptySeparator{\multicolumn{2}{c}{}\\}

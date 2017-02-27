@@ -17,7 +17,35 @@ Unlike _Alessandro Plasmati_ CV template, all layout stuff in **Awesome Source L
 
 ## Quick start
 
-You can edit online **Awesome Source Latex CV** on [Overleaf](https://www.overleaf.com/latex/templates/awesome-source-cv/wrdjtkkytqcw). Feel free to use my [referal link](https://www.overleaf.com/signup?ref=54c221604cd6) if you want to create your account.
+## How to use **Awesome Source CV** latex class
+
+### Use the **Awesome Source CV** options
+
+When declaring the `\documentclass` you can use option(s) to customize your CV rendering.
+
+```latex
+% Used with no option, the template will use the 'traditional' 
+% header layout your system fonts and the default color scheme ie. blue
+\documentclass{awesome-source-cv}
+
+% Used with localFont option the template will use the 'traditional' 
+% header layout, fonts included in the fonts directory and the default color scheme
+\documentclass[localFont]{awesome-source-cv}
+
+% Used with chinese option the template will support Chinese 
+% header layout, fonts included in the fonts directory and the default color scheme
+\documentclass[chinese]{awesome-source-cv}
+
+=================
+
+## About
+
+**Awesome Source Latex CV** was originally based on a CV template created by Alessandro Plasmati. Thi template use _XeLaTeX_ engine and _[Fontin Sans](http://www.exljbris.com/fontinsans.html)_ font. 
+
+
+**Personal data** has moved on top of the first page just before the position and _[Fontin Sans](http://www.exljbris.com/fontinsans.html)_ font has been replaced by _[Source Sans Pro Font](https://github.com/adobe-fonts/source-sans-pro)_ from Adobe. _[Font Awesome](http://fontawesome.io/)_ icons highlight important elements.
+
+Unlike _Alessandro Plasmati_ CV template, all layout stuff in **Awesome Source Latex CV** has moved in the Latex class file _awesome-source-cv.cls_ to imptove source code readability.
 
 ## How to use **Awesome Source CV** latex class
 
@@ -37,6 +65,10 @@ When declaring the `\documentclass` you can use option(s) to customize your CV r
 % Used with localFont option, the template will use the 'alternative' 
 % header layout, your system fonts and the default color scheme
 \documentclass[alternative]{awesome-source-cv}
+
+% Used with chinese option the template will support Chinese 
+% header layout, fonts included in the fonts directory and the default color scheme
+\documentclass[chinese]{awesome-source-cv}
 
 ```
 
@@ -96,95 +128,16 @@ Put these command in the `\socialinfo` wrapper. Feel free to add `\\` when you w
 
 Use the `\makecvheader`command to generate the header.
 
+Use the `\makecvheaderwithoutphoto`command to generate the header without your profile photo.
+
 ```latex
 \makecvheader
 ```
 
-### Construct the _experiences_ section
-
-To describe your experiences you have first to declare the `experiences` environment
-
 ```latex
-% Begin a new experiences environment to use experience and consultantexperience macro
-\begin{experiences}
-
-% Here's go your experiences
-
-\end{experiences}
+\makecvheaderwithoutphoto
 ```
 
-Then you can describe your experiences using **\experience** and **\consultantexperience** entries. Each
-entry must be separated by the **\emptyseparator** 
-
-```latex
-% Begin a new experiences environment to use experience and consultantexperience macro
-\begin{experiences}
-
-% The experience entry work as below and can be used to describe a job experience
-  \experience
-    {End date}      {Experience title}{Enterprise}{Country}
-    {Begin date}    {
-    				  experience details
-                      \begin{itemize}
-                        \item Item 1: _Item 1 description_
-                        \item Item 2: _Item 2 description_
-                        \item Item 3: _Item 3 description_
-                      \end{itemize}
-                    }
-                    {Technology highlights}
-
-% The emptyseparator macro is used to create white space in your experience
-  \emptySeparator
-
-% The consultantexperience macro is very similar to the experience macro, but offer you 
-% the possibility tu put client details
-  \consultantexperience
-    {End date}        {Experience title}{Enterprise}{Country}
-    {Begin date}      {Client job title}{Clent enterprise}
-                    {
-                      experience details
-                      \begin{itemize}
-                        \item Item 1: _Item 1 description_
-                        \item Item 2: _Item 2 description_
-                        \item Item 3: _Item 3 description_
-                      \end{itemize}
-                    }
-                    {Technology highlights}
-\end{experiences}
-```
-
-### Construct the _languages_ section
-
-The _languages_ section use the **skills** environment. 
-
-```latex
-% Begin a new skills environment and fill it with skill entries
-  \begin{skills}
-
-% Render a skill in the skills environment
-% Usage: \skill{<skill>}{<level between 1 and 5>}
-    \skill{Français}{5}
-    \skill{Anglais}{4}
-
-% End the skills environment    
-  \end{skills}
-```
-
-### Construct the _scolarship_ section
-
-The _scolarship_ section ise the **scolarship** environment.
-
-```latex
-  \begin{scholarship}
-
-% Render a scholarshipentry in the scolarship environment
-% Usage: \scholarshipentry{<date>}{<description>}
-    \scholarshipentry{2007}
-          {Master STIC Professionel filière MBDS de l'Université de Nice Sophia Antipolis (Master Informatique spécialité Multimédia, Base de Données et intégration de Systèmes)}
-    \scholarshipentry{2005}
-          {Licence Sciences et Technologies, Mention Informatique, de l'Université de Nouvelle-Calédonie}
-  \end{scholarship}
-```
 
 ## License
 
