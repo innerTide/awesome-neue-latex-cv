@@ -6,6 +6,7 @@ Awesome Source CV Extended
 **Awesome Source Latex CV** was originally based on a CV template created by Alessandro Plasmati. Thi template use _LuaLaTeX_ engine and _[Fontin Sans](http://www.exljbris.com/fontinsans.html)_ font. For Chinese support, _[Noto Sans](https://www.google.com/get/noto/) _ is applied.
 
 ***ATTENTION 1: This project can not be compiled with MiKTeX since there is unexpected errors (luelatex.exe crashed). TeXLive is highly recommended!***
+
 ***ATTENTION 2：When Chinese support is enabled, there can be a noticable increase of compiling time, please disable it if not need. 中文支持将大幅延长编译时间！***
 
 More informations about the original Alessandro Plasmati template can be found here :
@@ -27,19 +28,27 @@ Unlike _Alessandro Plasmati_ CV template, all layout stuff in **Awesome Source L
 When declaring the `\documentclass` you can use option(s) to customize your CV rendering.
 
 **Used with no option, the template will use the 'traditional' **
+
 _header layout your system fonts and the default color scheme ie. blue_
+
 `\documentclass{awesome-source-cv}`
 
 **Used with localFont option the template will use the 'traditional' **
+
 _header layout, fonts included in the fonts directory and the default color scheme_
+
 `\documentclass[localFont]{awesome-source-cv}`
 
 **Used with localFont option, the template will use the 'alternative' **
+
 _header layout, your system fonts and the default color scheme_
+
 `\documentclass[alternative]{awesome-source-cv}`
 
 **Used with chinese option the template will support Chinese **
+
 **使用chinese选项开启中文支持**
+
 `\documentclass[chinese]{awesome-source-cv}`
 
 ### Construct the header
