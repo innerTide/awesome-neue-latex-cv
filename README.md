@@ -1,7 +1,7 @@
 Awesome Source CV Extended [![Example](https://img.shields.io/badge/Exemple-pdf-blue.svg)](https://github.com/innerTide/awesome-neue-latex-cv-extended/raw/master/CV.pdf)
 =================
 
-## About
+# About
 
 **Awesome Source Latex CV** was originally based on a CV template created by Alessandro Plasmati. The template use _XeLaTeX_ engine and _[Fontin Sans](http://www.exljbris.com/fontinsans.html)_ font.
 
@@ -21,7 +21,7 @@ Unlike _Alessandro Plasmati_ CV template, all layout stuff in **Awesome Source L
 
 Additionally, the _LuaLaTeX_ has been applied as default TeX engine.
 
-## Modification
+# Modification
 
 - Added Chinese support.
 - University and company logo on respective sections.
@@ -29,38 +29,38 @@ Additionally, the _LuaLaTeX_ has been applied as default TeX engine.
 - Header without photo.
 - Separate projects and work experience section.
 
-## Quick start
+# Quick start
 
-### How to use **Awesome Source CV** latex class
+## How to use **Awesome Source CV** latex class
 
-#### Use the **Awesome Source CV** options
+### Use the **Awesome Source CV** options
 
 When declaring the `\documentclass` you can use option(s) to customize your CV rendering.
 
-**Used with no option, the template will use the 'traditional' **
+**Used with no option, the template will use the 'traditional'**
 
 _header layout your system fonts and the default color scheme ie. blue_
 
 `\documentclass{awesome-source-cv}`
 
-**Used with localFont option the template will use the 'traditional' **
+**Used with localFont option the template will use the 'traditional'**
 
 _header layout, fonts included in the fonts directory and the default color scheme_
 
 `\documentclass[localFont]{awesome-source-cv}`
 
-**Used with localFont option, the template will use the 'alternative' **
+**Used with localFont option, the template will use the 'alternative'**
 
 _header layout, your system fonts and the default color scheme_
 
-`\documentclass[alternative]{awesome-source-cv}`
+`\documentclass[localFont, alternative]{awesome-source-cv}`
 
-**Used with chinese option the template will support Chinese **
+**Used with chinese option the template will support Chinese**
 **使用chinese选项开启中文支持**
 
-`\documentclass[chinese]{awesome-source-cv}`
+`\documentclass[localFont, alternative, chinese]{awesome-source-cv}`
 
-#### Construct the header
+### Construct the header
 
 Outside of the `\socialinfo` wrapper you have to define the mandatory parameters `\name` and `\tagline`.
 
@@ -72,7 +72,7 @@ Use the `\makecvheader`command to generate the header.
 
 Use the `\makecvheaderwithoutphoto`command to generate the header without your profile photo.
 
-#### Content sections
+### Content sections
 In every tex file of the corresponding sections, there are instructions to add entries.
 
 
