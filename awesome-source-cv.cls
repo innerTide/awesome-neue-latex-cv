@@ -188,8 +188,15 @@
 
 % Render author's name
 % Usage: \user{<firstanme>}{<lastname>}
-\newcommand\user[2]{\color{accentcolor}{\LARGE #1 \textbf{#2}}\color{Black}}
-\newcommand\userhuge[2]{\color{accentcolor}{\fontsize{35pt}{35pt}\selectfont #1 \textbf{#2}}\color{Black}}
+\ifdef{\@chinese}{
+	\newcommand\user[2]{\color{accentcolor}{\LARGE #2 \textbf{#1}}\color{Black}}
+	\newcommand\userhuge[2]{\color{accentcolor}{\fontsize{35pt}{35pt}\selectfont #2 \textbf{#1}}\color{Black}}
+}
+{
+	\newcommand\user[2]{\color{accentcolor}{\LARGE #1 \textbf{#2}}\color{Black}}
+	\newcommand\userhuge[2]{\color{accentcolor}{\fontsize{35pt}{35pt}\selectfont #1 \textbf{#2}}\color{Black}}
+}
+
 
 % Render a text with its symbol
 % Usage; \socialtext{<icon>}{<label>}
