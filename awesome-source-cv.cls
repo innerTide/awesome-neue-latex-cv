@@ -75,6 +75,7 @@
 
 \ifdef{\@chinese}{
 	\RequirePackage{luatexja-fontspec}
+	\RequirePackage{luatexja}
 }
 
 
@@ -146,9 +147,9 @@
 \ifdef{\@chinese}{
 	\setmainjfont{NotoSansCJKsc-Light}[
 	Path = fonts/cn/, 
-	BoldFont = NotoSansCJKsc-Bold, 
-	ItalicFont = STKaiti, 
-	SmallCapsFont = NotoSansCJKsc-Medium]
+	BoldFont = NotoSansCJKsc-Regular, 
+	ItalicFont = STKaiti,
+	SmallCapsFont = NotoSansCJKsc-Regular]
 }
 
 %New length definition
@@ -395,15 +396,28 @@ SmallCapsFont = SourceSansPro-Regular]
 %                    }
 %                    {<Technology list>}
 %  {<Logo parameter>}	{Logo File Name}
-\newcommand\experience[9]{
-  \textit{#1}    & \textsc{#2, #3, #4}   			&	
-  \multirow{2}{*}{\includegraphics[#8]{#9}}						\\*
-  \textit{#5}    & \begin{minipage}[t]{\universitynamelength}
-  					         #6
-                   \end{minipage}										\\*
-                 & \multicolumn{2}{l}{\footnotesize{\foreach \n in {#7}{\cvtag{\n}}}}\\
-  }
 
+
+\ifdef{\@chinese}{
+	\newcommand\experience[9]{
+		#5    & \textbf{#2\hspace{0.3em}|\hspace{0.3em}#3\hspace{0.3em}|\hspace{0.3em}#4}   			&	
+		\multirow{2}{*}{\includegraphics[#8]{#9}}						\\*
+		#1    & \begin{minipage}[t]{\universitynamelength}
+			#6
+		\end{minipage}										\\*
+		& \multicolumn{2}{l}{\footnotesize{\foreach \n in {#7}{\cvtag{\n}}}}\\
+	}
+}
+{
+	\newcommand\experience[9]{
+		\textit{#1}    & \textsc{#2, #3, #4}   			&	
+		\multirow{2}{*}{\includegraphics[#8]{#9}}						\\*
+		\textit{#5}    & \begin{minipage}[t]{\universitynamelength}
+			#6
+		\end{minipage}										\\*
+		& \multicolumn{2}{l}{\footnotesize{\foreach \n in {#7}{\cvtag{\n}}}}\\
+	}
+}
 
 
 
@@ -425,10 +439,10 @@ SmallCapsFont = SourceSansPro-Regular]
 
 \ifdef{\@chinese}{
 	\newcommand\education[9]{
-		\textsc{#1}    & \textsc{#2} 			&	
+		#8  & \textbf{#2} 			&	
 		\multirow{3}{*}{\includegraphics[#3]{#4}}				\\*
-		#5    & \textsc{专业: #6, 加权成绩: #7}						\\*
-		#8    & #9	 \\
+		#5    & \textbf{#1\hspace{0.3em}|\hspace{0.3em}专业：#6\hspace{0.3em}|\hspace{0.3em}加权成绩：#7}						\\*
+		    & #9	 \\
 	}
 }
 {
@@ -458,10 +472,23 @@ SmallCapsFont = SourceSansPro-Regular]
 %                      <Contribution to the project>
 %                    }
 %                    {<Technology list>}
-\newcommand\project[5]{
-  \textit{#1}    & \textsc{#2}   								\\*
-  \textit{#3}    & \begin{minipage}[t]{\rightcolumnlength}
-  					         #4
-                   \end{minipage}										\\*
-                 & \footnotesize{\foreach \n in {#5}{\cvtag{\n}}} 	\\
-  }
+
+\ifdef{\@chinese}{
+	\newcommand\project[5]{
+		#3    & \textbf{#2}   								\\*
+		#1    & \begin{minipage}[t]{\rightcolumnlength}
+			#4
+		\end{minipage}										\\*
+		& \footnotesize{\foreach \n in {#5}{\cvtag{\n}}} 	\\
+	}
+}
+{
+	\newcommand\project[5]{
+		\textit{#1}    & \textsc{#2}   								\\*
+		\textit{#3}    & \begin{minipage}[t]{\rightcolumnlength}
+			#4
+		\end{minipage}										\\*
+		& \footnotesize{\foreach \n in {#5}{\cvtag{\n}}} 	\\
+	}
+}
+
