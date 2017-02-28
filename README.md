@@ -1,4 +1,4 @@
-Awesome Source CV Extended
+Awesome Source CV Extended [![Example](https://img.shields.io/badge/Exemple-pdf-blue.svg)](https://github.com/innerTide/awesome-neue-latex-cv-extended/raw/master/CV.pdf)
 =================
 
 ## About
@@ -6,6 +6,7 @@ Awesome Source CV Extended
 **Awesome Source Latex CV** was originally based on a CV template created by Alessandro Plasmati. The template use _XeLaTeX_ engine and _[Fontin Sans](http://www.exljbris.com/fontinsans.html)_ font.
 
 ***ATTENTION 1: This project can not be compiled with MiKTeX since there are unexpected errors (luelatex.exe crashed). TeXLive is highly recommended!***
+
 ***ATTENTION 2：When Chinese support is enabled, there can be a noticable increase of compiling time, please disable it if not need. 中文支持将大幅延长编译时间！***
 
 More informations about the original Alessandro Plasmati template can be found here :
@@ -14,9 +15,9 @@ More informations about the original Alessandro Plasmati template can be found h
    -  [ LaTeX Templates ](http://www.latextemplates.com/template/plasmati-graduate-cv)
    -  [ ShareLatex ](https://www.sharelatex.com/templates/cv-or-resume/professional-cv)
 
-**Personal data** has moved on top of the first page just before the position and _[Fontin Sans](http://www.exljbris.com/fontinsans.html)_ font has been replaced by _[Source Sans Pro Font](https://github.com/adobe-fonts/source-sans-pro)_ from Adobe. _[Font Awesome](http://fontawesome.io/)_ icons highlight important elements. For Chinese support, _[Noto Sans](https://www.google.com/get/noto/) _ is applied.
+**Personal data** has moved on top of the first page just before the position and _[Fontin Sans](http://www.exljbris.com/fontinsans.html)_ font has been replaced by _[Source Sans Pro Font](https://github.com/adobe-fonts/source-sans-pro)_ from Adobe. _[Font Awesome](http://fontawesome.io/)_ icons highlight important elements. For Chinese support, _[Noto Sans](https://www.google.com/get/noto/)_ is applied.
 
-Unlike _Alessandro Plasmati_ CV template, all layout stuff in **Awesome Source Latex CV** has moved in the Latex class file _awesome-source-cv.cls_ to imptove source code readability. 
+Unlike _Alessandro Plasmati_ CV template, all layout stuff in **Awesome Source Latex CV** has moved in the Latex class file _awesome-source-cv.cls_ to imptove source code readability.
 
 Additionally, the _LuaLaTeX_ has been applied as default TeX engine.
 
