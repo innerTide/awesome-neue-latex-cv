@@ -3,10 +3,9 @@ Awesome Source CV Extended
 
 ## About
 
-**Awesome Source Latex CV** was originally based on a CV template created by Alessandro Plasmati. Thi template use _LuaLaTeX_ engine and _[Fontin Sans](http://www.exljbris.com/fontinsans.html)_ font. For Chinese support, _[Noto Sans](https://www.google.com/get/noto/) _ is applied.
+**Awesome Source Latex CV** was originally based on a CV template created by Alessandro Plasmati. The template use _XeLaTeX_ engine and _[Fontin Sans](http://www.exljbris.com/fontinsans.html)_ font.
 
-***ATTENTION 1: This project can not be compiled with MiKTeX since there is unexpected errors (luelatex.exe crashed). TeXLive is highly recommended!***
-
+***ATTENTION 1: This project can not be compiled with MiKTeX since there are unexpected errors (luelatex.exe crashed). TeXLive is highly recommended!***
 ***ATTENTION 2：When Chinese support is enabled, there can be a noticable increase of compiling time, please disable it if not need. 中文支持将大幅延长编译时间！***
 
 More informations about the original Alessandro Plasmati template can be found here :
@@ -15,15 +14,25 @@ More informations about the original Alessandro Plasmati template can be found h
    -  [ LaTeX Templates ](http://www.latextemplates.com/template/plasmati-graduate-cv)
    -  [ ShareLatex ](https://www.sharelatex.com/templates/cv-or-resume/professional-cv)
 
-**Personal data** has moved on top of the first page just before the position and _[Fontin Sans](http://www.exljbris.com/fontinsans.html)_ font has been replaced by _[Source Sans Pro Font](https://github.com/adobe-fonts/source-sans-pro)_ from Adobe. _[Font Awesome](http://fontawesome.io/)_ icons highlight important elements.
+**Personal data** has moved on top of the first page just before the position and _[Fontin Sans](http://www.exljbris.com/fontinsans.html)_ font has been replaced by _[Source Sans Pro Font](https://github.com/adobe-fonts/source-sans-pro)_ from Adobe. _[Font Awesome](http://fontawesome.io/)_ icons highlight important elements. For Chinese support, _[Noto Sans](https://www.google.com/get/noto/) _ is applied.
 
-Unlike _Alessandro Plasmati_ CV template, all layout stuff in **Awesome Source Latex CV** has moved in the Latex class file _awesome-source-cv.cls_ to imptove source code readability.
+Unlike _Alessandro Plasmati_ CV template, all layout stuff in **Awesome Source Latex CV** has moved in the Latex class file _awesome-source-cv.cls_ to imptove source code readability. 
+
+Additionally, the _LuaLaTeX_ has been applied as default TeX engine.
+
+## Modification
+
+- Added Chinese support.
+- University and company logo on respective sections.
+- Double column language section.
+- Header without photo.
+- Separate projects and work experience section.
 
 ## Quick start
 
-## How to use **Awesome Source CV** latex class
+### How to use **Awesome Source CV** latex class
 
-### Use the **Awesome Source CV** options
+#### Use the **Awesome Source CV** options
 
 When declaring the `\documentclass` you can use option(s) to customize your CV rendering.
 
@@ -46,12 +55,11 @@ _header layout, your system fonts and the default color scheme_
 `\documentclass[alternative]{awesome-source-cv}`
 
 **Used with chinese option the template will support Chinese **
-
 **使用chinese选项开启中文支持**
 
 `\documentclass[chinese]{awesome-source-cv}`
 
-### Construct the header
+#### Construct the header
 
 Outside of the `\socialinfo` wrapper you have to define the mandatory parameters `\name` and `\tagline`.
 
@@ -63,7 +71,7 @@ Use the `\makecvheader`command to generate the header.
 
 Use the `\makecvheaderwithoutphoto`command to generate the header without your profile photo.
 
-### Content sections
+#### Content sections
 In every tex file of the corresponding sections, there are instructions to add entries.
 
 
