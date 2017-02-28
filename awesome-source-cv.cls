@@ -121,6 +121,9 @@
 
 % Setup fonts
 \defaultfontfeatures{Mapping=tex-text}
+\ifdef{\@chinese}{
+	\defaultjfontfeatures{Mapping=tex-text}
+}
 %
 
 % Define font to use according to localFont option
@@ -143,9 +146,9 @@
 \ifdef{\@chinese}{
 	\setmainjfont{NotoSansCJKsc-Light}[
 	Path = fonts/cn/, 
-	BoldFont = NotoSansCJKsc-Medium, 
+	BoldFont = NotoSansCJKsc-Bold, 
 	ItalicFont = STKaiti, 
-	SmallCapsFont = NotoSansCJKsc-Regular]
+	SmallCapsFont = NotoSansCJKsc-Medium]
 }
 
 %New length definition
@@ -189,8 +192,8 @@
 % Render author's name
 % Usage: \user{<firstanme>}{<lastname>}
 \ifdef{\@chinese}{
-	\newcommand\user[2]{\color{accentcolor}{\LARGE #2 \textbf{#1}}\color{Black}}
-	\newcommand\userhuge[2]{\color{accentcolor}{\fontsize{35pt}{35pt}\selectfont #2 \textbf{#1}}\color{Black}}
+	\newcommand\user[2]{\color{accentcolor}{\LARGE\textbf{#2#1}}\color{Black}}
+	\newcommand\userhuge[2]{\color{accentcolor}{\fontsize{35pt}{35pt}\selectfont\textbf{#2#1}}\color{Black}}
 }
 {
 	\newcommand\user[2]{\color{accentcolor}{\LARGE #1 \textbf{#2}}\color{Black}}
@@ -228,6 +231,10 @@
 % Render author's address
 % Usage: \address{<address>}
 \newcommand*{\address}[1]{\socialtext{\locationSymbol}{#1}}
+
+% Render author's birthday
+% Usage: \birthday{<birthday>}
+\newcommand*{\birthday}[1]{\socialtext{\faBirthdayCake}{#1}}
 
 % Render author's infos
 % Usage: \infos{<infos>}
@@ -415,12 +422,26 @@ SmallCapsFont = SourceSansPro-Regular]
 %  {<Start date>}     {<Major>}{GPA}
 %  {<End date>}			{<Remarks>}     
 % 
-\newcommand\education[9]{
-  \textsc{#1}    & \textsc{#2}   			&	
-  \multirow{3}{*}{\includegraphics[#3]{#4}}				\\*
-  \textit{#5}    & \textsc{Specialty: #6, GPA: #7}						\\*
-  \textit{#8}    & #9	 \\
-  }
+
+\ifdef{\@chinese}{
+	\newcommand\education[9]{
+		\textsc{#1}    & \textsc{#2} 			&	
+		\multirow{3}{*}{\includegraphics[#3]{#4}}				\\*
+		#5    & \textsc{专业: #6, 加权成绩: #7}						\\*
+		#8    & #9	 \\
+	}
+}
+{
+		\newcommand\education[9]{
+		\textsc{#1}    & \textsc{#2}   			&	
+		\multirow{3}{*}{\includegraphics[#3]{#4}}				\\*
+		\textit{#5}    & \textsc{Specialty: #6, GPA: #7}						\\*
+		\textit{#8}    & #9	 \\
+	}
+}
+
+
+
 
 % Define the 'projects' environment
 \newenvironment{projects}{%
