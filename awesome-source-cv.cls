@@ -237,6 +237,10 @@
 % Usage: \birthday{<birthday>}
 \newcommand*{\birthday}[1]{\socialtext{\faBirthdayCake}{#1}}
 
+% Render CV Objective
+% Usage: \objective{<object>}
+\newcommand*{\objective}[1]{\socialtext{\faBullseye}{#1}}
+
 % Render author's infos
 % Usage: \infos{<infos>}
 \newcommand*{\infos}[1]{\socialtext{\infoSymbol}{#1}}
