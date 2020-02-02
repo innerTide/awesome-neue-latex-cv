@@ -83,18 +83,6 @@
 % Define default accent colors
 \definecolor{basecolor}{HTML}{0080FF}       %BLUE
 
-\ifundef{\@green} {
-  \ifundef{\@red} {
-    \ifundef{\@indigo}{
-      \ifundef{\@orange} {}
-      { \definecolor{basecolor}{HTML}{e68a00} }
-    }
-    { \definecolor{basecolor}{rgb}{0.2, 0.07, 0.48} }
-  }
-  { \definecolor{basecolor}{HTML}{b30000} }     %RED
-}
-{ \definecolor{basecolor}{rgb}{0.0, 0.62, 0.38} }
-
 \definecolor{darkGrey}{HTML}{989898}
 
 \colorlet{linkcolor}{basecolor}
